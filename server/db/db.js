@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
-const pkg = require('../../package.json')
-const mysql = require('mysql')
+// const pkg = require('../../package.json')
+// const mysql = require('mysql')
 
-const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
+// const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
 const db = new Sequelize('compras', 'root', 'nicolas22', {
   host: '127.0.0.1',
