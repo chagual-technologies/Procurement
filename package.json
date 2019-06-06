@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "compras",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Sistema de compras / Procurement System",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -38,7 +38,7 @@
       "git add"
     ]
   },
-  "author": "Fullstack Academy of Code",
+  "author": "Macarena Carreno",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
@@ -48,6 +48,8 @@
     "express-session": "^1.15.1",
     "history": "^4.9.0",
     "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "pg": "^7.9.0",
