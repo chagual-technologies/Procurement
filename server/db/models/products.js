@@ -4,40 +4,38 @@ const db = require('../db')
 const Products = db.define('products', {
   code: {
     type: Sequelize.STRING,
-    required: true,
-    unique: true
+    unique: true,
+    allowNull: false
   },
 
   name: {
     type: Sequelize.STRING,
-    required: true,
-    unique: true
+    unique: true,
+    allowNull: false
   },
 
   brand: {
     type: Sequelize.STRING,
-    required: false,
-    unique: false
+    unique: false,
+    allowNull: false
   },
 
   inventory: {
     type: Sequelize.INTEGER,
-    defaultValue: 0,
-    required: true
+    defaultValue: 0
   },
 
   unit: {
-    type: Sequelize.STRING,
-    required: true
+    type: Sequelize.STRING
   },
 
   price1: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 0
   },
   price2: {
-    type: Sequelize.FLOAT,
+    type: Sequelize.INTEGER,
     defaultValue: 0
   },
 
@@ -62,4 +60,4 @@ const Products = db.define('products', {
   }
 })
 
-module.export = Products
+module.exports = Products

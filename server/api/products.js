@@ -1,11 +1,11 @@
 const router = require('express').Router()
-const {Product} = require('..db/models')
+const {Products, Type, Bussines} = require('../db/models/index')
 module.exports = router
 
 // ALL PRODUCTS
 router.get('/', async (req, res, next) => {
   try {
-    const products = await Product.findAll()
+    const products = await Products.findAll()
     res.json(products)
   } catch (error) {
     next(error)
@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
-    const product = await Product.findbyPk(id)
+    const product = await Products.findbyPk(id)
     res.json(product)
   } catch (error) {
     next(error)
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res, next) => {
 // NEW PRODUCT
 router.post('/', async (req, res, next) => {
   try {
-    const newProduct = await Product.create(req.body)
+    const newProduct = await Products.create(req.body)
     res.status(200).json(newProduct)
   } catch (error) {
     next(error)
@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 // DELETE PRODUCT
 router.delete('/:id', async (req, res, next) => {
   try {
-    await Product.destroy({
+    await Products.destroy({
       where: {
         id: req.params.id
       }
@@ -51,7 +51,8 @@ router.delete('/:id', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const [_, [updated]] = await Product.update(req.body, {
+    console.log('REQ.Body', req.body)
+    const [_, [updated]] = await Products.update(req.body, {
       where: {
         id: req.params.id
       },
