@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+// import './Form.css'
+
 export default class ProductForm extends Component {
   constructor(props) {
     super(props)
@@ -35,70 +37,57 @@ export default class ProductForm extends Component {
   }
 
   render() {
-    console.log('props', this.props)
-
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Codigo:
-          <input
-            type="text"
-            name="code"
-            onChange={this.handleChange}
-            value={this.state.code}
-          />
-        </label>
-        <label>
-          Nombre:
-          <input
-            type="text"
-            name="name"
-            onChange={this.handleChange}
-            value={this.state.name}
-          />
-        </label>
+        <label>Codigo</label>
+        <input
+          type="text"
+          name="code"
+          onChange={this.handleChange}
+          value={this.state.code}
+        />
 
-        <label>
-          Marca:
-          <input
-            type="text"
-            name="brand"
-            onChange={this.handleChange}
-            value={this.state.brand}
-          />
-        </label>
+        <label>Nombre</label>
+        <input
+          type="text"
+          name="name"
+          onChange={this.handleChange}
+          value={this.state.name}
+        />
 
-        <label>
-          Unidad:
-          <input
-            type="text"
-            name="unit"
-            onChange={this.handleChange}
-            value={this.state.unit}
-          />
-        </label>
+        <label>Marca</label>
+        <input
+          type="text"
+          name="brand"
+          onChange={this.handleChange}
+          value={this.state.brand}
+        />
 
-        <label>
-          Stock Mínimo:
-          <input
-            type="number"
-            name="minStock"
-            onChange={this.handleChange}
-            value={this.state.minStock}
-          />
-        </label>
+        <label>Unidad</label>
+        <input
+          type="text"
+          name="unit"
+          onChange={this.handleChange}
+          value={this.state.unit}
+        />
 
-        <label>
-          Comentario:
-          <input
-            type="text"
-            name="comment"
-            onChange={this.handleChange}
-            value={this.state.comment}
-          />
-        </label>
+        <label>Stock Mínimo</label>
+        <input
+          type="number"
+          name="minStock"
+          onChange={this.handleChange}
+          value={this.state.minStock}
+        />
 
-        <button type="submit" className="btn btn-primary">
+        <label>Comentario:</label>
+        <input
+          type="text"
+          name="comment"
+          onChange={this.handleChange}
+          value={this.state.comment}
+        />
+
+        <button type="submit" className="btn-save">
           Guardar
         </button>
       </form>

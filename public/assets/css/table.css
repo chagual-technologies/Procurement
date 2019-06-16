@@ -5,6 +5,7 @@ table.dataTable {
   color: #38393e;
   border-collapse: collapse;
   border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 table.dataTable td,
@@ -16,6 +17,7 @@ table.dataTable th {
 th {
   background: #e4e4e4;
   border-color: white;
+  font-weight: 900;
 }
 
 table.dataTable tbody td {

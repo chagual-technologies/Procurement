@@ -1,5 +1,13 @@
+@import 'modal.css';
+@import 'icons.css';
+@import 'table.css';
+@import 'form.css';
+@import 'button.css';
+
 body {
   font-family: sans-serif;
+  padding: 1ksem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {
@@ -18,4 +26,66 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 1.875em;
+  font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 0.875em;
+}
+
+.box {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0px 0px 8px 0px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+  background-color: #e4e4e4;
+}
+
+.box-header {
+  background-color: #293241;
+  color: #e0fbfc;
+  margin: 0px;
+  height: 40px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-header h2 {
+  padding: 10px;
+}
+
+.box-content {
+  padding: 20px 20px 20px 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.main-box {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0px 0px 8px 0px;
+}
+
+.title {
+  color: #293241;
+  margin: 0px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

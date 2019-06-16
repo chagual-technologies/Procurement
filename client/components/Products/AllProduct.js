@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import {allProducts} from '../../store'
 import {connect} from 'react-redux'
+
+import ReactModal from 'react-modal'
+import {IoMdAddCircle, IoIosCloseCircleOutline} from 'react-icons/io'
+
 import Product from './Product'
 import NewProduct from './NewProduct'
 
@@ -8,28 +12,71 @@ class AllProducts extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showForm: false
+      showModal: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleOpenModal = this.handleOpenModal.bind(this)
+    this.handleCloseModal = this.handleCloseModal.bind(this)
   }
 
   componentDidMount() {
     this.props.allProducts()
   }
 
-  handleClick() {
-    return this.setState({
-      showForm: !this.state.showForm
-    })
+  handleOpenModal() {
+    this.setState(prevState => ({showModal: !prevState.showModal}))
+  }
+
+  handleCloseModal() {
+    this.setState(prevState => ({showModal: !prevState.showModal}))
   }
 
   render() {
     const {products, loading} = this.props.products
-    console.log(loading)
+
+    console.log('in ALL', products)
 
     return (
       <div>
-        <NewProduct heading="Nuevo Producto" submitAction="Post" />
+        <div className="main-box">
+          <div className="title">
+            <h2>Listado de Productos</h2>
+            <button
+              type="button"
+              className="btn-corner-main"
+              onClick={this.handleOpenModal}
+            >
+              <IoMdAddCircle />
+            </button>
+          </div>
+        </div>
+
+        <ReactModal
+          isOpen={this.state.showModal}
+          contentLabel="Modal to Edit Product"
+          onRequestClose={this.handleCloseModal}
+          shouldCloseOnOverlayClick={false}
+          ariaHideApp={false}
+          className="Modal"
+          overlayClassName="Overlay"
+        >
+          <div className="box">
+            <div className="box-header">
+              Nuevo Producto
+              <button
+                type="button"
+                onClick={this.handleCloseModal}
+                className="btn-corner"
+                alt="Cerrar"
+              >
+                <IoIosCloseCircleOutline />
+              </button>
+            </div>
+
+            <div className="box-content">
+              <NewProduct heading="Nuevo Producto" submitAction="Post" />
+            </div>
+          </div>
+        </ReactModal>
 
         <table className="dataTable">
           <thead>
@@ -38,23 +85,24 @@ class AllProducts extends Component {
               <th>Codigo</th>
               <th>Nombre</th>
               <th>Marca</th>
+              <th>Inventariable</th>
+              <th>Tipo</th>
+
               <th>Un</th>
-              <th>Precio 1</th>
-              <th>Precio 2</th>
-              <th>Inventario</th>
+              <th>$ Actual </th>
+              <th>$ Anterior</th>
               <th>Stock</th>
-              <th>Pendiente</th>
+              <th>Valor Stock</th>
+              <th>Por Recibir</th>
               <th>Stock Min</th>
               <th>Comentario</th>
-
-              <th>Ver</th>
               <th>Editar</th>
             </tr>
           </thead>
 
           <tfoot>
             <tr>
-              <td colSpan="8">
+              <td colSpan="15">
                 <div className="links">
                   <a href="#">&laquo;</a>{' '}
                   <a className="active" href="#">
