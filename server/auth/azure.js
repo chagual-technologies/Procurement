@@ -1,7 +1,8 @@
 const passport = require('passport')
 const router = require('express').Router()
-const AzureAdOAuth2Strategy = require('passport-azure-oauth').OAuth2Strategy
+const AzureAdOAuth2Strategy = require('passport-azure-ad-oauth2').Strategy
 const {User} = require('../db/models')
+const jwt = require('jsonwebtoken')
 module.exports = router
 
 if (!process.env.AZURE_CLIENT_ID || !process.env.AZURE_CLIENT_SECRET) {
@@ -24,7 +25,7 @@ if (!process.env.AZURE_CLIENT_ID || !process.env.AZURE_CLIENT_SECRET) {
   ) {
     // currently we can't find a way to exchange access token by user info (see userProfile implementation), so
     // you will need a jwt-package like https://github.com/auth0/node-jsonwebtoken to decode id_token and get waad profile
-    var waadProfile = profile || jwt.decode(params.id_token)
+    const waadProfile = profile || jwt.decode(params.id_token)
     console.log(waadProfile)
 
     // this is just an example: here you would provide a model *User* with the function *findOrCreate*
@@ -44,7 +45,7 @@ if (!process.env.AZURE_CLIENT_ID || !process.env.AZURE_CLIENT_SECRET) {
     }),
     function(req, res) {
       // Successful authentication, redirect home.
-      res.redirect('/')
+      res.redirect('/home')
     }
   )
 }
