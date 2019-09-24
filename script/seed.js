@@ -1,18 +1,105 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Products, Type} = require('../server/db/models')
+
+const seedUsers = [
+  {
+    email: 'cody@email.com',
+    password: '123'
+  },
+  {
+    email: 'murphy@email.com',
+    password: '123'
+  }
+]
+
+const seedType = [
+  {
+    name: 'Insumo',
+    bussinesline: 'Entibacion',
+    products: [
+      {
+        code: 'A01',
+        name: 'Caja verde2',
+        brand: '3M',
+        inventory: 20,
+        unit: 'c/u',
+        price1: 200,
+        price2: 300,
+        stock: 25,
+        pending: 5,
+        minstock: 2,
+        comment: 'todo OK'
+      },
+      {
+        code: 'A02',
+        name: 'Caja roja',
+        brand: '3M',
+        inventory: 20,
+        unit: 'c/u',
+        price1: 200,
+        price2: 300,
+        stock: 25,
+        pending: 5,
+        minstock: 2,
+        comment: 'todo OK'
+      }
+    ]
+  },
+  {
+    name: 'Activo',
+    bussinesline: 'Entibacion',
+    products: [
+      {
+        code: 'V01',
+        name: 'Caja Lila',
+        brand: '3M',
+        inventory: 20,
+        unit: 'c/u',
+        price1: 200,
+        price2: 300,
+        stock: 25,
+        pending: 5,
+        minstock: 2,
+        comment: 'todo OK'
+      },
+      {
+        code: 'V02',
+        name: 'Caja roja3',
+        brand: '3M',
+        inventory: 20,
+        unit: 'c/u',
+        price1: 200,
+        price2: 300,
+        stock: 25,
+        pending: 5,
+        minstock: 2,
+        comment: 'todo OK'
+      }
+    ]
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
+  await Promise.all(
+    seedUsers.map(user => {
+      return User.create(user)
+    })
+  )
+  await Promise.all(
+    seedType.map(type => {
+      return Type.create(type, {
+        include: [Products]
+      })
+    })
+  )
+  console.log(`seeded ${seedUsers.length} users`)
+  console.log(`seeded ${seedType.length} types`)
 
-  console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
