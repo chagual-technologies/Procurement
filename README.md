@@ -10,3 +10,5 @@ Using https://github.com/FullstackAcademy/boilermaker.git by Fullstack Academy
 `npm run seed`
 
 for questions contact MacarenaCarreno
+
+# Procurement
