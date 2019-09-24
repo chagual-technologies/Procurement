@@ -74,3 +74,5 @@ Boilermaker comes with a working linter (ESLint, with `eslint-config-fullstack`)
 `npm run seed`
 
 for questions contact MacarenaCarreno
+
+# Procurement
