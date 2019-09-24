@@ -12,7 +12,8 @@ if (!process.env.AZURE_CLIENT_ID || !process.env.AZURE_CLIENT_SECRET) {
     clientID: process.env.AZURE_CLIENT_ID,
     clientSecret: process.env.AZURE_CLIENT_SECRET,
     callbackURL: process.env.AZURE_CALLBACK,
-    resource: '00000002-0000-0000-c000-000000000000',
+    // resource: '00000002-0000-0000-c000-000000000000',
+    resource: '00000003-0000-0000-c000-000000000000',
     tenant: 'plandigital.onmicrosoft.com'
   }
 
@@ -36,10 +37,10 @@ if (!process.env.AZURE_CLIENT_ID || !process.env.AZURE_CLIENT_SECRET) {
 
   passport.use(strategy)
 
-  router.get('/auth/azureadoauth2', passport.authenticate('azure_ad_oauth2'))
+  router.get('/azureadoauth2', passport.authenticate('azure_ad_oauth2'))
 
   router.get(
-    '/auth/azureadoauth2/callback',
+    '/readoauth2/callback',
     passport.authenticate('azure_ad_oauth2', {
       failureRedirect: '/login'
     }),
